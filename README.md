@@ -1,6 +1,3 @@
-# FinalProject_C
-Final project using the C programming language.
-
 # 📚 Library Book Tracking System (C Language)
 
 ## 🎯 Objective
