@@ -1,0 +1,2 @@
+void viewAvailableBooks();
+void returnBOOK();
