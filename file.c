@@ -1,6 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>  
+#include <windows.h>
+#include "admin.h"
+#include "file.h"
 
 void loadFromCSV(){
     printf("Loading data from CSV...\n");

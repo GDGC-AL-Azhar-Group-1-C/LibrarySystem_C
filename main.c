@@ -1,11 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include<admin.h>
-#include<user.h>
-#include<file.h>
+#include "admin.h"
+#include "user.h"
+#include "file.h"
 
-void display_menu(){
+void displayMenu(){
     printf("Welcome to the file management system!\n");
     printf("1. Admin login\n");
     printf("2. User login\n");
@@ -16,15 +16,15 @@ void display_menu(){
 int main(){
     int choice;
     loadFromCSV();
-    while (true){
-        display_menu();
+    while (1){
+        displayMenu();
         scanf("%d", &choice);
         switch (choice){
             case 1:
-                admin_login();
+                adminLogin();
                 break;
             case 2:
-                user_login();
+                userLogin();
                 break;
             case 3:
                 saveToCSV();
