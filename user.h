@@ -8,4 +8,4 @@ typedef struct {
 } Book;
 
 void viewAvailableBooks();
-void returnBook();
+void returnBOOK();
