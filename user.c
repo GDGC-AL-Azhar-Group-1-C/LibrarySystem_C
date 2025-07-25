@@ -3,6 +3,7 @@
 #include <string.h>
 #include "user.h"
 #include "file.h"
+#include "admin.h"
 
 void userLogin(){
     printf("Welcome to the User Login!\n");
@@ -73,6 +74,8 @@ void returnBook() {
 
 void searchForBooks()
 {
+    Book books[100];
+    readBooks(books, &countBooks);
     int choice;
     printf("\n--- Choose Search Option ---\n");
     printf("------------------------------\n");
@@ -82,56 +85,78 @@ void searchForBooks()
     printf("4. Exit Search \n");
     printf("------------------------------\n");
     printf("Please select an option: ");    
-    //getchar(); // Clear the newline character from the input buffer
-
 
     do {
         printf("Choice: ");
-        scanf("%c", &choice);
-        if (scanf("%d", &choice) != 1 || (choice < 1 || choice > 3)) {
-            printf("Invalid choice. Please enter 1, 2, or 3:\n");
-            while(getchar() != '\n'); // Clear input buffer
+        if (scanf("%d", &choice) != 1 || (choice < 1 || choice > 4)) 
+        {
+            printf("Invalid choice. Please enter 1, 2, 3 or 4 :\n");
+            while(getchar() != '\n');
         }
-    } while (choice < 1 || choice > 3);
+    } while (choice < 1 || choice > 4);
+
     int found = 0;
+
     printf("\n--- Search Results ---\n");
     if (choice == 1)
     {
         char search[MAX_STRING];
-        printf("Enter book (title or author): ");
+        printf("Enter book title: ");
+		getchar();
         fgets(search, MAX_STRING, stdin);
         search [ strcspn (search, "\n") ] = 0;
 
         for (int i = 0; i < countBooks; i++)
         {
-            if ( strstr ( books[i].title, search) || strstr ( books[i].author, search))
+            if ( strstr ( books[i].title, search))
             {
-                printf("Book ID: %d  |  Title: %s  |  Author: %s  |  Year: %d\n",books[i].id, books[i].title, books[i].author, books[i].year);
+                printf("Book ID: %d  |  Title: %s  |  Author: %s  |  Year: %d\n",
+                    books[i].id, books[i].title, books[i].author, books[i].year);
                 found = 1;
             }
         }
     } else if (choice == 2)
     {
-        int search_year;
-        do
-        {
-            printf("Enter book publication year: ");
-            if (scanf("%d", &search_year) != 1 || search_year <= 0 || search_year > 2025)
-            {
-                printf("Invalid year. Please enter correct number: ");
-            }
-        } while (search_year <= 0 || search_year > 2025);
+        char search[MAX_STRING];
+        printf("Enter book author: ");
+		getchar();
+        fgets(search, MAX_STRING, stdin);
+        search[strcspn(search, "\n")] = 0;
 
         for (int i = 0; i < countBooks; i++)
         {
-            if (books[i].year == search_year)
+            if (strstr(books[i].author, search))
             {
-                printf("Book ID: %d | Title: %s | Author: %s | Year: %d\n",
-                        books[i].id, books[i].title, books[i].author, books[i].year);
+                printf("Book ID: %d  |  Title: %s  |  Author: %s  |  Year: %d\n",
+                    books[i].id, books[i].title, books[i].author, books[i].year);
                 found = 1;
             }
         }
-    }
+    }else if (choice == 3)
+    {
+        int year;
+        do
+        {
+            printf("Enter book publication year: ");
+            if (scanf("%d", &year) != 1 || year <= 0 || year > 2025)
+            {
+                printf("Invalid year. Please enter correct number: ");
+            }
+        } while (year <= 0 || year > 2025);
+
+        for (int i = 0; i < countBooks; i++)
+        {
+            if (books[i].year == year)
+            {
+                printf("Book ID: %d | Title: %s | Author: %s | Year: %d\n",
+                    books[i].id, books[i].title, books[i].author, books[i].year);
+                found = 1;
+            }
+        }
+    }else if (choice == 4)
+    {
+        return;
+	}
     if (!found)
     {
         printf("No books found in the system.\n");
