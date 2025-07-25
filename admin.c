@@ -32,13 +32,6 @@ void adminLogin(){
         }
     }
 }
-
-// 1 - Add new books
-// 2- Remove books
-// 3 - View all books
-// 4 - View borrowed books
-// 5 - Count total books
-// 6 - Logout
 void displayAdminMenu() {
     printf("\n=========================\n");
     printf("        Admin Menu       \n");
@@ -64,25 +57,25 @@ void adminMenu(){
             continue;
         }
         switch (choice){
-            case '1:
-                // Function to add new book
+            case '1':
+                addBook(); 
                 break;
             case '2':
-                // Function to remove book
+                removeBook(); 
                 break;
             case '3':
-                // Function to view all books
+                viewAllBooks(); 
                 break;   
             case '4':
-                // Function to view borrowed books
+                viewBorrowedBooks(); 
                 break;      
             case '5':
-                // Function to count total books
+                countBooks();
                 break;
             case '6':
-                printf("Logging out...\n");
-                Sleep(1000); 
-                return ; 
+                printf("Logging out and saving data...\n");
+                saveBooksToCSV();  
+                return;
             default:
                 printf("Invalid choice, please try again.\n");  
         }

@@ -1,10 +1,22 @@
-
 #ifndef ADMIN_H
 #define ADMIN_H
+
+typedef struct {
+    int id;
+    char title[100];
+    char author[100];
+    int year;
+    int isAvailable; 
+} Librery;
+
+
+void loadBooksFromCSV();
+void saveBooksToCSV();
+void viewAllBooks();
+
 // Admin functions
 void addBook();
 void removeBook();
-void viewAllBooks();
 void viewBorrowedBooks();
 void countBooks();
 
@@ -12,6 +24,4 @@ void countBooks();
 void viewAvailableBooks();
 void borrowBook();
 void returnBook();
-void searchByTitle();
-void filterByAuthor();
-void filterByYear();
+void searchForBooks();
