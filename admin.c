@@ -17,7 +17,7 @@ void adminLogin(){
         printf("Enter Admin ID: ");
         scanf("%d", &adminId);
         printf("Enter Password: ");
-        scanf("%s", password);
+        scanf("%10s", password);
         if (adminId != correctAdminId || strcmp(password, correctPassword) != 0){
             printf("Invalid Admin ID or Password. Please try again.\n");
             count++;
@@ -39,42 +39,50 @@ void adminLogin(){
 // 4 - View borrowed books
 // 5 - Count total books
 // 6 - Logout
-void displayAdminMenu(){
-    printf("Admin Menu: \n");
+void displayAdminMenu() {
+    printf("\n=========================\n");
+    printf("        Admin Menu       \n");
+    printf("=========================\n");
     printf("1. Add New Book\n");
     printf("2. Remove Book\n");
     printf("3. View All Books\n");
     printf("4. View Borrowed Books\n");
     printf("5. Count Total Books\n");
     printf("6. Logout\n");
-    printf("Please select an option: ");  
+    printf("=========================\n");
+    printf("Please select an option: ");
 }
 
+
 void adminMenu(){
-    int choice;
+    char choice;
+    DisplayAdminMenu();
     while (1){
-        DisplayAdminMenu();
-        scanf("%d", &choice);
+        if (scanf(" %c", &choice) != 1) {
+            while (getchar() != '\n'); 
+            printf("Invalid input. Please enter a number from 1 to 6.\n");
+            continue;
+        }
         switch (choice){
-            case 1:
+            case '1:
                 // Function to add new book
                 break;
-            case 2:
+            case '2':
                 // Function to remove book
                 break;
-            case 3:
+            case '3':
                 // Function to view all books
                 break;   
-            case 4:
+            case '4':
                 // Function to view borrowed books
                 break;      
-            case 5:
+            case '5':
                 // Function to count total books
                 break;
-            case 6:
+            case '6':
                 printf("Logging out...\n");
-                Sleep(1000); // Simulate some delay
-                return 0; // Exit admin menu
+                Sleep(1000); 
+                return ; 
             default:
                 printf("Invalid choice, please try again.\n");  
         }
