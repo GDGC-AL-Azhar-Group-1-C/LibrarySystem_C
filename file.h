@@ -7,7 +7,7 @@ typedef struct {
     char author[100];
     int year;
     int isAvailable; 
-} Librery;
+} Book;
 
 
 void loadBooksFromCSV();
