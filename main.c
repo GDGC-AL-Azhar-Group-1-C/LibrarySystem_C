@@ -27,8 +27,8 @@ int main(){
                 userLogin();
                 break;
             case 3:
-                saveToCSV();
                 printf("Exiting the system. Goodbye!\n");
+                saveToCSV();
                 exit(0);
             default:
                 printf("Invalid choice, please try again.\n");

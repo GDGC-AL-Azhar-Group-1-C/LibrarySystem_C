@@ -7,12 +7,11 @@
 
 Book library[1000];
 int bookCount = 0;
-int dataChanged = 0;
 
 void loadFromCSV() {
     FILE *fp = fopen("books.csv", "r");
     if (fp == NULL) {
-        printf("Error opening file for writing.\n");
+        printf("Error opening file for reading.\n");
         return;
     }
 
@@ -25,6 +24,10 @@ void loadFromCSV() {
                   &library[bookCount].isBorrowed) == 5) {
         bookCount++;
     }
+    if (bookCount >= 1000) {
+            printf("Warning: Reached maximum number of books (1000).\n");
+            break;
+        }
     fclose(fp);
 }
 
