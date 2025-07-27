@@ -155,7 +155,33 @@ void displayUserMenu() {
     printf("=========================\n");
     printf("Please select an option: ");
 }
+void borrowBook() {
+    int id, found = 0;
+    printf("Enter the book ID to borrow: ");
+    if (scanf("%d", &id) != 1) {
+        printf("Invalid input. Please enter a valid book ID.\n");
+        while (getchar() != '\n'); // clear buffer
+        return;
+    }
+    while (getchar() != '\n'); // clear buffer after valid input
 
+    for (int i = 0; i < bookCount; i++) {
+        if (library[i].id == id) {
+            found = 1;
+            if (library[i].isAvailable == 1) {
+                library[i].isAvailable = 0;
+                printf("Book borrowed successfully.\n");
+            } else {
+                printf("This book is currently borrowed by someone else.\n");
+            }
+            break;
+        }
+    }
+
+    if (!found) {
+        printf("Book with ID %d not found.\n", id);
+    }
+}
 void userMenu() {
     char choice;
     while (1) {
