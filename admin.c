@@ -32,7 +32,7 @@ void adminLogin() {
             printf("Invalid Admin ID or Password. Please try again.\n");
             attempts++;
         } else {
-            printf("Admin login successful!\n");
+            printf("\nAdmin login successful!\n");
             Sleep(1000); // Simulate a short delay
             adminMenu();
             return;

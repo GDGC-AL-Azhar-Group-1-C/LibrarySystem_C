@@ -2,9 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include<windows.h>
+#include <ctype.h>
 #include "user.h"
 #include "file.h"
 
+void toLowerCase(char *str) {
+    for (int i = 0; str[i]; i++) {
+        str[i] = tolower(str[i]);
+    }
+}
 void userLogin() {
     printf("Welcome to the User Login!\n");
 
@@ -30,10 +36,10 @@ void userLogin() {
         while (getchar() != '\n');  // clear buffer after reading password
 
         if (userId != correctUserId || strcmp(password, correctPassword) != 0) {
-            printf("Invalid User ID or Password. Please try again.\n");
+            printf("\nInvalid User ID or Password. Please try again.\n");
             attempts++;
         } else {
-            printf("User login successful!\n");
+            printf("\nUser login successful!\n");
             Sleep(1000); // Simulate a short delay
             userMenu();
             return;

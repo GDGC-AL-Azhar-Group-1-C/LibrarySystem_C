@@ -39,7 +39,7 @@ void loadFromCSV() {
 }
 
 // Save current book data to a CSV file
-void saveBooksToCSV() {
+void saveToCSV() {
     FILE *fp = fopen("books.csv", "w");
     if (fp == NULL) {
         printf("Error opening file for writing.\n");
