@@ -1,27 +1,21 @@
-#ifndef ADMIN_H
-#define ADMIN_H
+#ifndef FILE_H
+#define FILE_H
+
+#define MAX_BOOKS 10000
 
 typedef struct {
     int id;
     char title[100];
     char author[100];
     int year;
-    int isAvailable; 
+    int isAvailable; // 1 = Available, 0 = Borrowed
 } Book;
 
+extern Book library[MAX_BOOKS];
+extern int bookCount;
 
-void loadBooksFromCSV();
-void saveBooksToCSV();
-void viewAllBooks();
 
-// Admin functions
-void addBook();
-void removeBook();
-void viewBorrowedBooks();
-void countBooks();
+void loadFromCSV();        // Load books from CSV
+void saveToCSV();          // Save books to CSV
 
-// User functions
-void viewAvailableBooks();
-void borrowBook();
-void returnBook();
-void searchForBooks();
+#endif

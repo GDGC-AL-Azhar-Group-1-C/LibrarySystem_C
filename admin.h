@@ -2,5 +2,11 @@
 #define ADMIN_H
 
 void adminLogin();
-void displayAdminMenu();
 void adminMenu();
+void addBook();
+void removeBook();
+void viewAllBooks();
+void viewBorrowedBooks();
+void countBooks();
+
+#endif

@@ -1,37 +1,48 @@
-#include<stdio.h>
-#include<stdlib.h>  
-#include<string.h>  
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <windows.h>
-#include "file.h"
 #include "admin.h"
+#include "file.h"
 
+#define MAX_BOOKS 10000
 
-void adminLogin(){
-    int count = 1;
-    printf("Welcome to the Admin Login!\n");
+extern Book library[MAX_BOOKS];
+extern int bookCount;
+
+void adminLogin() {
+    int attempts = 0;
+    const int MAX_ATTEMPTS = 3;
     int adminId;
-    char password[20];  
-    const int correctAdminId = 1234; 
-    const char correctPassword[] = "admin123"; 
-    while (1){
+    while (attempts < MAX_ATTEMPTS) {
         printf("Enter Admin ID: ");
-        scanf("%d", &adminId);
+        if (scanf("%d", &adminId) != 1) {
+            printf("Invalid input. Please enter a valid number.\n");
+            while (getchar() != '\n');  // clear buffer
+            continue;
+        }
+        while (getchar() != '\n');  // clear buffer after valid input
+
         printf("Enter Password: ");
-        scanf("%10s", password);
-        if (adminId != correctAdminId || strcmp(password, correctPassword) != 0){
+        char password[20];
+        scanf("%19s", password);
+        while (getchar() != '\n');  // clear buffer after reading password
+
+        if (adminId != 1234 || strcmp(password, "admin123") != 0) {
             printf("Invalid Admin ID or Password. Please try again.\n");
-            count++;
-            if (count > 3){
-                printf("Too many failed attempts. Exiting...\n");
-                exit(1);
-            }
-            
-        }else{
+            attempts++;
+        } else {
             printf("Admin login successful!\n");
-            break;
+            Sleep(1000); // Simulate a short delay
+            adminMenu();
+            return;
         }
     }
+   
+    printf("Too many failed attempts. Exiting...\n");
+    exit(1);    
 }
+
 void displayAdminMenu() {
     printf("\n=========================\n");
     printf("        Admin Menu       \n");
@@ -46,38 +57,132 @@ void displayAdminMenu() {
     printf("Please select an option: ");
 }
 
+void addBook() {
+    if (bookCount >= MAX_BOOKS) {
+        printf("Cannot add more books. Library is full.\n");
+        return;
+    }
 
-void adminMenu(){
+    Book newBook;
+    newBook.id = bookCount + 1;
+
+    getchar(); // Clear input buffer
+    printf("Enter book title: ");
+    fgets(newBook.title, sizeof(newBook.title), stdin);
+    newBook.title[strcspn(newBook.title, "\n")] = '\0';
+
+    printf("Enter author name: ");
+    fgets(newBook.author, sizeof(newBook.author), stdin);
+    newBook.author[strcspn(newBook.author, "\n")] = '\0';
+
+    printf("Enter publication year: ");
+    scanf("%d", &newBook.year);
+
+    newBook.isAvailable = 1; // New book is available by default
+
+    library[bookCount++] = newBook;
+    printf("Book added successfully!\n");
+}
+
+void removeBook() {
+    int id, found = 0;
+    printf("Enter the ID of the book to remove: ");
+    if (scanf("%d", &id) != 1) {
+        printf("Invalid input. Please enter a valid number.\n");
+        while (getchar() != '\n');
+        return;
+    }
+
+    for (int i = 0; i < bookCount; i++) {
+        if (library[i].id == id) {
+            found = 1;
+            for (int j = i; j < bookCount - 1; j++) {
+                library[j] = library[j + 1];
+            }
+            memset(&library[bookCount - 1], 0, sizeof(Book));
+            bookCount--;
+            printf("Book with ID %d removed successfully.\n", id);
+            return;
+        }
+    }
+
+    if (!found) {
+        printf("Book with ID %d not found.\n", id);
+    }
+}
+
+void viewAllBooks() {
+    if (bookCount == 0) {
+        printf("No books in the library.\n");
+        return;
+    }
+
+    printf("\n--- All Books ---\n");
+    for (int i = 0; i < bookCount; i++) {
+        printf("ID: %d | Title: %s | Author: %s | Year: %d | Status: %s\n",
+            library[i].id,
+            library[i].title,
+            library[i].author,
+            library[i].year,
+            library[i].isAvailable ? "Available" : "Borrowed");
+    }
+}
+void viewBorrowedBooks() {
+    int found = 0;
+    printf("\n--- Borrowed Books ---\n");
+    for (int i = 0; i < bookCount; i++) {
+        if (!library[i].isAvailable) {
+            printf("ID: %d | Title: %s | Author: %s | Year: %d\n",
+                library[i].id,
+                library[i].title,
+                library[i].author,
+                library[i].year);
+            found = 1;
+        }
+    }
+    if (!found) {
+        printf("No borrowed books found.\n");
+    }
+}
+
+void countBooks() {
+    printf("\nTotal number of books in the library: %d\n", bookCount);
+}
+
+void adminMenu() {
     char choice;
-    DisplayAdminMenu();
-    while (1){
+    while (1) {
+        displayAdminMenu();
         if (scanf(" %c", &choice) != 1) {
-            while (getchar() != '\n'); 
+            while (getchar() != '\n');
             printf("Invalid input. Please enter a number from 1 to 6.\n");
             continue;
         }
-        switch (choice){
+
+        switch (choice) {
             case '1':
-                addBook(); 
+                addBook();
                 break;
             case '2':
-                removeBook(); 
+                removeBook();
                 break;
             case '3':
-                viewAllBooks(); 
-                break;   
+                viewAllBooks();
+                break;
             case '4':
-                viewBorrowedBooks(); 
-                break;      
+                viewBorrowedBooks();
+                break;
             case '5':
                 countBooks();
                 break;
             case '6':
-                printf("Logging out and saving data...\n");
-                saveBooksToCSV();  
+                printf("Saving data...\n");
+                saveToCSV(); 
+                printf("Logging out...\n");
+                Sleep(1000);
                 return;
             default:
-                printf("Invalid choice, please try again.\n");  
+                printf("Invalid choice, please try again.\n");
         }
     }
 }

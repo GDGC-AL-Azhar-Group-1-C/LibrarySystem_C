@@ -1,39 +1,45 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>  
-#include<windows.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <windows.h>
 #include "admin.h"
 #include "file.h"
 
-Book library[1000];
+#define MAX_BOOKS 10000
+
+Book library[MAX_BOOKS];
 int bookCount = 0;
 
+// Load book data from a CSV file
 void loadFromCSV() {
     FILE *fp = fopen("books.csv", "r");
     if (fp == NULL) {
-        printf("Error opening file for reading.\n");
+        printf("No existing data found (books.csv not found). Starting with an empty library.\n");
         return;
     }
 
     bookCount = 0;
-    while (fscanf(fp, "%d,%99[^,],%99[^,],%d,%d\n",
+    while (bookCount < MAX_BOOKS &&
+           fscanf(fp, "%d,%99[^,],%99[^,],%d,%d\n",
                   &library[bookCount].id,
                   library[bookCount].title,
                   library[bookCount].author,
                   &library[bookCount].year,
-                  &library[bookCount].isBorrowed) == 5) {
+                  &library[bookCount].isAvailable) == 5) {
         bookCount++;
     }
-    if (bookCount >= 1000) {
-            printf("Warning: Reached maximum number of books (1000).\n");
-            break;
-        }
+
     fclose(fp);
+
+    if (bookCount >= MAX_BOOKS) {
+        printf("Warning: Reached the maximum number of books (%d).\n", MAX_BOOKS);
+    } else {
+        printf("Loaded %d books from books.csv.\n", bookCount);
+    }
 }
 
-void saveToCSV() {
-    printf("Saving data to CSV...\n");
-
+// Save current book data to a CSV file
+void saveBooksToCSV() {
     FILE *fp = fopen("books.csv", "w");
     if (fp == NULL) {
         printf("Error opening file for writing.\n");
@@ -42,13 +48,13 @@ void saveToCSV() {
 
     for (int i = 0; i < bookCount; i++) {
         fprintf(fp, "%d,%s,%s,%d,%d\n",
-            library[i].id,
-            library[i].title,
-            library[i].author,
-            library[i].year,
-            library[i].isBorrowed);
+                library[i].id,
+                library[i].title,
+                library[i].author,
+                library[i].year,
+                library[i].isAvailable);
     }
 
     fclose(fp);
-    printf("Data saved successfully.\n");
+    printf("Library saved successfully to books.csv.\n");
 }
