@@ -4,6 +4,7 @@
 #include <windows.h>
 #include "admin.h"
 #include "file.h"
+#include "user.h"
 
 #define MAX_BOOKS 10000
 
@@ -52,7 +53,8 @@ void displayAdminMenu() {
     printf("3. View All Books\n");
     printf("4. View Borrowed Books\n");
     printf("5. Count Total Books\n");
-    printf("6. Logout\n");
+    printf("6. Search for Book\n");
+    printf("7. Logout\n");
     printf("=========================\n");
     printf("Please select an option: ");
 }
@@ -117,32 +119,42 @@ void viewAllBooks() {
         return;
     }
 
-    printf("\n--- All Books ---\n");
+    printf("\n---------------------- All Books ----------------------\n");
+    printf("+------+------------------------+------------------------+------+------------+\n");
+    printf("| ID    | Title                     | Author                 | Year | Status     |\n");
+    printf("+------+------------------------+------------------------+------+------------+\n");
     for (int i = 0; i < bookCount; i++) {
-        printf("ID: %d | Title: %s | Author: %s | Year: %d | Status: %s\n",
+        printf("| %-5d | %-25s | %-22s | %-4d | %-10s |\n",
             library[i].id,
             library[i].title,
             library[i].author,
             library[i].year,
             library[i].isAvailable ? "Available" : "Borrowed");
     }
+    printf("+------+------------------------+------------------------+------+------------+\n");
 }
+
 void viewBorrowedBooks() {
     int found = 0;
-    printf("\n--- Borrowed Books ---\n");
+    printf("\n---------------------- Borrowed Books ----------------------\n");
+    printf("+------+---------------------------+------------------------+------+------------+\n");
+    printf("| ID   | Title                     | Author                 | Year | Status     |\n");
+    printf("+------+---------------------------+------------------------+------+------------+\n");
     for (int i = 0; i < bookCount; i++) {
         if (!library[i].isAvailable) {
-            printf("ID: %d | Title: %s | Author: %s | Year: %d\n",
+            printf("| %-4d | %-25s | %-22s | %-4d | %-10s |\n",
                 library[i].id,
                 library[i].title,
                 library[i].author,
-                library[i].year);
+                library[i].year,
+                "Borrowed");
             found = 1;
         }
     }
     if (!found) {
-        printf("No borrowed books found.\n");
+        printf("| No borrowed books found.                                                  |\n");
     }
+    printf("+------+---------------------------+------------------------+------+------------+\n");
 }
 
 void countBooks() {
@@ -155,7 +167,7 @@ void adminMenu() {
         displayAdminMenu();
         if (scanf(" %c", &choice) != 1) {
             while (getchar() != '\n');
-            printf("Invalid input. Please enter a number from 1 to 6.\n");
+            printf("Invalid input. Please enter a number from 1 to 7.\n");
             continue;
         }
 
@@ -176,8 +188,11 @@ void adminMenu() {
                 countBooks();
                 break;
             case '6':
+                searchForBooks();
+                break;
+            case '7':
                 printf("Saving data...\n");
-                saveToCSV(); 
+                saveToCSV();
                 printf("Logging out...\n");
                 Sleep(1000);
                 return;
