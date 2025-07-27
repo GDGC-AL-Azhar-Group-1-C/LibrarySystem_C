@@ -174,7 +174,7 @@ void borrowBook() {
     for (int i = 0; i < bookCount; i++) {
         if (library[i].id == id) {
             found = 1;
-            if (library[i].isAvailable == 1) {
+            if (library[i].isAvailable ==1) {
                 library[i].isAvailable = 0;
                 printf("Book borrowed successfully.\n");
             } else {

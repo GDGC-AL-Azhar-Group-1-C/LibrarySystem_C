@@ -1,100 +1,100 @@
-1,Embedded Systems,Dennis Ritchie,1970,0
-2,Network Security,Robert Lafore,2017,0
-3,Operating Systems,Robert Lafore,1981,0
-4,Computer Networks,Andrew Tanenbaum,1997,0
-5,Data Structures,Stuart Russell,1999,0
-6,Software Engineering,Stuart Russell,1972,0
-7,Python Basics,Robert Lafore,1992,0
-8,Embedded Systems,Dennis Ritchie,2014,0
-9,Mobile App Development,Andrew Tanenbaum,2005,0
-10,Artificial Intelligence,Guido van Rossum,2015,0
-11,Embedded Systems,John McCarthy,2012,0
-12,Machine Learning,Andrew Tanenbaum,2011,0
-13,System Design,Brian Kernighan,1976,0
-14,Software Engineering,Bjarne Stroustrup,2021,0
-15,Computer Networks,Guido van Rossum,1972,0
-16,Python Basics,Robert Lafore,1990,0
-17,Algorithms Unlocked,Brian Kernighan,1998,0
-18,Operating Systems,Guido van Rossum,2021,0
-19,Algorithms Unlocked,Yann LeCun,1992,0
-20,System Design,Yann LeCun,1985,0
-21,Compiler Design,Robert Lafore,1977,0
-22,Clean Code,David Patterson,1999,0
-23,Data Structures,David Patterson,1989,0
-24,Web Development,Dennis Ritchie,2007,0
-25,Algorithms Unlocked,Brian Kernighan,1974,0
-26,C Programming,Bjarne Stroustrup,2017,0
-27,System Design,Yann LeCun,2020,0
-28,Artificial Intelligence,John McCarthy,1977,0
-29,Artificial Intelligence,John McCarthy,2012,0
-30,Computer Networks,John McCarthy,1972,0
-31,Computer Networks,Dennis Ritchie,1984,0
-32,System Design,Yann LeCun,2023,0
-33,Web Development,Guido van Rossum,2020,0
-34,Clean Code,Andrew Tanenbaum,2022,0
-35,Network Security,Brian Kernighan,2015,0
-36,Computer Networks,Guido van Rossum,1998,0
-37,Machine Learning,Guido van Rossum,2007,0
-38,Computer Networks,Robert C. Martin,1988,0
-39,Microcontrollers,David Patterson,1989,0
-40,Mobile App Development,Andrew Tanenbaum,1996,0
-41,Clean Code,John McCarthy,1990,0
-42,Operating Systems,Dennis Ritchie,1985,0
-43,Operating Systems,Brian Kernighan,2001,0
-44,Network Security,Robert Lafore,2002,0
-45,The Pragmatic Programmer,Robert C. Martin,2000,0
-46,C Programming,Robert C. Martin,1986,0
-47,Mobile App Development,Guido van Rossum,1995,0
-48,Machine Learning,Guido van Rossum,2008,0
-49,The Pragmatic Programmer,Robert Lafore,2017,0
-50,Clean Code,Andrew Tanenbaum,2011,0
-51,Object-Oriented Design,Stuart Russell,1974,0
-52,Object-Oriented Design,Yann LeCun,1970,0
-53,Microcontrollers,Robert Lafore,2003,0
-54,The Pragmatic Programmer,Guido van Rossum,2023,0
-55,Data Structures,Robert Lafore,1997,0
-56,Python Basics,Robert Lafore,2017,0
-57,Data Structures,Robert C. Martin,1987,0
-58,Network Security,Brian Kernighan,2000,0
-59,Embedded Systems,Brian Kernighan,2003,0
-60,Network Security,Guido van Rossum,2023,0
-61,Operating Systems,Andrew Tanenbaum,1974,0
-62,Artificial Intelligence,Robert C. Martin,2023,0
-63,Python Basics,Guido van Rossum,2010,0
-64,Operating Systems,Brian Kernighan,2006,0
-65,Computer Networks,Robert Lafore,1984,0
-66,Microcontrollers,Brian Kernighan,2002,0
-67,Database Systems,Guido van Rossum,2015,0
-68,Mobile App Development,Bjarne Stroustrup,1974,0
-69,Python Basics,Yann LeCun,2017,0
-70,The Pragmatic Programmer,Yann LeCun,2005,0
-71,C Programming,Robert Lafore,1998,0
-72,Software Engineering,David Patterson,2005,0
-73,Operating Systems,John McCarthy,2018,0
-74,Embedded Systems,Bjarne Stroustrup,1991,0
-75,Microcontrollers,David Patterson,2001,0
-76,Algorithms Unlocked,David Patterson,1988,0
-77,Mobile App Development,Ken Thompson,1990,0
-78,Mobile App Development,David Patterson,1972,0
-79,Embedded Systems,Dennis Ritchie,1982,0
-80,Web Development,Robert Lafore,2021,0
-81,Software Engineering,Yann LeCun,2016,0
-82,Microcontrollers,Dennis Ritchie,1978,0
-83,Database Systems,Robert C. Martin,1970,0
-84,Data Structures,Stuart Russell,1981,0
-85,Compiler Design,Brian Kernighan,1987,0
-86,Database Systems,Yann LeCun,1972,0
-87,Embedded Systems,Robert Lafore,1977,0
-88,The Pragmatic Programmer,Brian Kernighan,1976,0
-89,Clean Code,David Patterson,1988,0
-90,Clean Code,Guido van Rossum,1987,0
-91,Web Development,Yann LeCun,1989,0
-92,Web Development,Guido van Rossum,1983,0
-93,Data Structures,Ken Thompson,1998,0
-94,Embedded Systems,Robert Lafore,2009,0
-95,C Programming,Brian Kernighan,1983,0
-96,Python Basics,Yann LeCun,1984,0
-97,Algorithms Unlocked,Bjarne Stroustrup,2007,0
-98,Computer Networks,Dennis Ritchie,2019,0
-99,Object-Oriented Design,Bjarne Stroustrup,1999,0
-100,System Design,Stuart Russell,1984,0
+1,Embedded Systems,Dennis Ritchie,1970,1
+2,Network Security,Robert Lafore,2017,1
+3,Operating Systems,Robert Lafore,1981,1
+4,Computer Networks,Andrew Tanenbaum,1997,1
+5,Data Structures,Stuart Russell,1999,1
+6,Software Engineering,Stuart Russell,1972,1
+7,Python Basics,Robert Lafore,1992,1
+8,Embedded Systems,Dennis Ritchie,2014,1
+9,Mobile App Development,Andrew Tanenbaum,2005,1
+10,Artificial Intelligence,Guido van Rossum,2015,1
+11,Embedded Systems,John McCarthy,2012,1
+12,Machine Learning,Andrew Tanenbaum,2011,1
+13,System Design,Brian Kernighan,1976,1
+14,Software Engineering,Bjarne Stroustrup,2021,1
+15,Computer Networks,Guido van Rossum,1972,1
+16,Python Basics,Robert Lafore,1990,1
+17,Algorithms Unlocked,Brian Kernighan,1998,1
+18,Operating Systems,Guido van Rossum,2021,1
+19,Algorithms Unlocked,Yann LeCun,1992,1
+20,System Design,Yann LeCun,1985,1
+21,Compiler Design,Robert Lafore,1977,1
+22,Clean Code,David Patterson,1999,1
+23,Data Structures,David Patterson,1989,1
+24,Web Development,Dennis Ritchie,2007,1
+25,Algorithms Unlocked,Brian Kernighan,1974,1
+26,C Programming,Bjarne Stroustrup,2017,1
+27,System Design,Yann LeCun,2020,1
+28,Artificial Intelligence,John McCarthy,1977,1
+29,Artificial Intelligence,John McCarthy,2012,1
+30,Computer Networks,John McCarthy,1972,1
+31,Computer Networks,Dennis Ritchie,1984,1
+32,System Design,Yann LeCun,2023,1
+33,Web Development,Guido van Rossum,2020,1
+34,Clean Code,Andrew Tanenbaum,2022,1
+35,Network Security,Brian Kernighan,2015,1
+36,Computer Networks,Guido van Rossum,1998,1
+37,Machine Learning,Guido van Rossum,2007,1
+38,Computer Networks,Robert C. Martin,1988,1
+39,Microcontrollers,David Patterson,1989,1
+40,Mobile App Development,Andrew Tanenbaum,1996,1
+41,Clean Code,John McCarthy,1990,1
+42,Operating Systems,Dennis Ritchie,1985,1
+43,Operating Systems,Brian Kernighan,2001,1
+44,Network Security,Robert Lafore,2002,1
+45,The Pragmatic Programmer,Robert C. Martin,2000,1
+46,C Programming,Robert C. Martin,1986,1
+47,Mobile App Development,Guido van Rossum,1995,1
+48,Machine Learning,Guido van Rossum,2008,1
+49,The Pragmatic Programmer,Robert Lafore,2017,1
+50,Clean Code,Andrew Tanenbaum,2011,1
+51,Object-Oriented Design,Stuart Russell,1974,1
+52,Object-Oriented Design,Yann LeCun,1970,1
+53,Microcontrollers,Robert Lafore,2003,1
+54,The Pragmatic Programmer,Guido van Rossum,2023,1
+55,Data Structures,Robert Lafore,1997,1
+56,Python Basics,Robert Lafore,2017,1
+57,Data Structures,Robert C. Martin,1987,1
+58,Network Security,Brian Kernighan,2000,1
+59,Embedded Systems,Brian Kernighan,2003,1
+60,Network Security,Guido van Rossum,2023,1
+61,Operating Systems,Andrew Tanenbaum,1974,1
+62,Artificial Intelligence,Robert C. Martin,2023,1
+63,Python Basics,Guido van Rossum,2010,1
+64,Operating Systems,Brian Kernighan,2006,1
+65,Computer Networks,Robert Lafore,1984,1
+66,Microcontrollers,Brian Kernighan,2002,1
+67,Database Systems,Guido van Rossum,2015,1
+68,Mobile App Development,Bjarne Stroustrup,1974,1
+69,Python Basics,Yann LeCun,2017,1
+70,The Pragmatic Programmer,Yann LeCun,2005,1
+71,C Programming,Robert Lafore,1998,1
+72,Software Engineering,David Patterson,2005,1
+73,Operating Systems,John McCarthy,2018,1
+74,Embedded Systems,Bjarne Stroustrup,1991,1
+75,Microcontrollers,David Patterson,2001,1
+76,Algorithms Unlocked,David Patterson,1988,1
+77,Mobile App Development,Ken Thompson,1990,1
+78,Mobile App Development,David Patterson,1972,1
+79,Embedded Systems,Dennis Ritchie,1982,1
+80,Web Development,Robert Lafore,2021,1
+81,Software Engineering,Yann LeCun,2016,1
+82,Microcontrollers,Dennis Ritchie,1978,1
+83,Database Systems,Robert C. Martin,1970,1
+84,Data Structures,Stuart Russell,1981,1
+85,Compiler Design,Brian Kernighan,1987,1
+86,Database Systems,Yann LeCun,1972,1
+87,Embedded Systems,Robert Lafore,1977,1
+88,The Pragmatic Programmer,Brian Kernighan,1976,1
+89,Clean Code,David Patterson,1988,1
+90,Clean Code,Guido van Rossum,1987,1
+91,Web Development,Yann LeCun,1989,1
+92,Web Development,Guido van Rossum,1983,1
+93,Data Structures,Ken Thompson,1998,1
+94,Embedded Systems,Robert Lafore,2009,1
+95,C Programming,Brian Kernighan,1983,1
+96,Python Basics,Yann LeCun,1984,1
+97,Algorithms Unlocked,Bjarne Stroustrup,2007,1
+98,Computer Networks,Dennis Ritchie,2019,1
+99,Object-Oriented Design,Bjarne Stroustrup,1999,1
+100,System Design,Stuart Russell,1984,1
