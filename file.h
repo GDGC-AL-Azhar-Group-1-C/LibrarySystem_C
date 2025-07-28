@@ -14,6 +14,8 @@ typedef struct {
 extern Book library[MAX_BOOKS];
 extern int bookCount;
 
+// clear terminal
+void clearScreen();
 
 void loadFromCSV();        // Load books from CSV
 void saveToCSV();          // Save books to CSV

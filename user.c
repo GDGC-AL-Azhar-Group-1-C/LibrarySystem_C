@@ -7,7 +7,10 @@
 #include "file.h"
 
 #define MAX_STRING 128
-
+#define GREEN "\x1b[32m"
+#define RED "\x1b[31m"
+#define RESET "\x1b[0m"
+ 
 void toLowerCase(char* str) {
     for (int i = 0; str[i]; i++) {
         if (str[i] >= 'A' && str[i] <= 'Z') {
@@ -17,7 +20,7 @@ void toLowerCase(char* str) {
 }
 
 void userLogin() {
-    printf("Welcome to the User Login!\n");
+    printf("\nWelcome to the User Login!\n");
 
     int userId;
     int attempts = 0;
@@ -27,10 +30,10 @@ void userLogin() {
     const int correctUserId = 1234;
     const char correctPassword[] = "user123";
 
-    while (attempts < MAX_ATTEMPTS) {
+    while (attempts < MAX_ATTEMPTS  ) {
         printf("Enter User ID: ");
         if (scanf("%d", &userId) != 1) {
-            printf("Invalid input. Please enter a valid number.\n");
+            printf(RED "\nInvalid input. Please enter a valid number.\n"RESET);
             while (getchar() != '\n');  // clear buffer
             continue;
         }
@@ -41,27 +44,29 @@ void userLogin() {
         while (getchar() != '\n');  // clear buffer after reading password
 
         if (userId != correctUserId || strcmp(password, correctPassword) != 0) {
-            printf("\nInvalid User ID or Password. Please try again.\n");
+            printf(RED"\nInvalid User ID or Password. Please try again.\n"RESET);
             attempts++;
         } else {
-            printf("\nUser login successful!\n");
+            printf(GREEN"\nUser login successful!\n"RESET);
             Sleep(1000); // Simulate a short delay
+            clearScreen();
             userMenu();
             return;
         }
     }
 
-    printf("Too many failed attempts. Exiting...\n");
+    printf(RED"Too many failed attempts. Exiting...\n"RESET);
     exit(1);
 }
 
 void userMenu() {
     char choice;
+    clearScreen();
     while (1) {
         displayUserMenu();
         if (scanf(" %c", &choice) != 1) {
             while (getchar() != '\n');
-            printf("Invalid input. Please enter a number from 1 to 5.\n");
+            printf(RED"Invalid input. Please enter a number from 1 to 5.\n"RESET);
             continue;
         }
 
@@ -80,18 +85,19 @@ void userMenu() {
                 break;
             case '5':
                 saveToCSV(); 
-                printf("Logging out...\n");
+                printf(GREEN "Saving data...\n" RESET);
                 Sleep(1000);
+                clearScreen();
                 return;
             default:
-                printf("Invalid choice, please try again.\n");
+                printf(RED "\nInvalid choice, please try again.\n"RESET);
         }
     }
 }
 
 void searchForBooks(){
     char choice;
-
+    clearScreen();
     if (bookCount == 0) {
         printf("No books in the system.\n");
         printf("---------------------------------\n");
@@ -164,7 +170,7 @@ void searchForBooks(){
         do {
             printf("Enter book publication year: ");
             if (scanf("%d", &year) != 1 || (year <= 0 || year > 2025)) {
-                printf("Invalid year. Please enter a correct number (e.g., 1900-2025).\n");
+                printf(RED"\nInvalid year. Please enter a correct number (e.g., 1900-2025).\n"RESET);
                 while (getchar() != '\n');
             } else {
                 break;
@@ -189,8 +195,8 @@ void searchForBooks(){
     } else if (choice == '4') {
         return;
     } else {
-        printf("Invalid option.\n");
-        return;
+        printf(RED"\nInvalid option.\n"RESET);
+        searchForBooks();
     }
 
     if (!found) {
@@ -229,16 +235,25 @@ void viewAvailableBooks() {
             found = 1;
         }
     }
-    if (!found) {
+if (!found) {
         printf("| No available books found.                                                 |\n");
     }
     printf("+------+---------------------------+------------------------+------+------------+\n");
+    printf("\nDo you want to keep viewing the available books? (y/n): ");
+    char c; 
+    scanf(" %c", &c);
+    if (c == 'n' || c == 'N') {
+        Sleep(1000);
+        clearScreen();
+    } else {
+        printf("Exiting book view.\n");
+    }
 }
 void borrowBook() {
     int id, found = 0;
     printf("Enter the book ID to borrow: ");
     if (scanf("%d", &id) != 1) {
-        printf("Invalid input. Please enter a valid book ID.\n");
+        printf(RED "\nInvalid input. Please enter a valid book ID.\n" RESET);
         while (getchar() != '\n'); // clear buffer
         return;
     }
@@ -249,9 +264,10 @@ void borrowBook() {
             found = 1;
             if (library[i].isAvailable == 1) {
                 library[i].isAvailable = 0;
-                printf("Book borrowed successfully.\n");
+                printf(GREEN"\nBook borrowed successfully.\n"RESET);
             } else {
                 printf("This book is currently borrowed.\n");
+                
             }
             break;
         }
@@ -260,6 +276,8 @@ void borrowBook() {
     if (!found) {
         printf("Book with ID %d not found.\n", id);
     }
+    Sleep(1000); // Simulate a short delay
+    clearScreen();
 }
 void returnBook() {
     int id, found = 0;
@@ -270,7 +288,7 @@ void returnBook() {
         if (library[i].id == id) {
             if (library[i].isAvailable == 0) {
                 library[i].isAvailable = 1;
-                printf("Book returned successfully.\n");
+                printf(GREEN"\nBook returned successfully.\n"RESET);
                 found = 1;
                 break;
             } else {
@@ -284,4 +302,6 @@ void returnBook() {
     if (!found) {
         printf("Book with ID %d not found.\n", id);
     }
+    Sleep(1000); 
+    clearScreen();
 }

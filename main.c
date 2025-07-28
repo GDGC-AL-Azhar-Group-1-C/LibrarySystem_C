@@ -5,6 +5,10 @@
 #include "user.h"
 #include "file.h"
 
+#define GREEN "\x1b[32m"
+#define RED "\x1b[31m"
+#define RESET "\x1b[0m"
+
 void displayMenu() {
     printf("\n==============================\n");
     printf(" Welcome to the Library System\n");
@@ -23,7 +27,7 @@ int main() {
         displayMenu();
 
         if (scanf("%d", &choice) != 1) {
-            printf("Invalid input. Please enter a number.\n");
+            printf(RED"\nInvalid input. Please enter a number.\n"RESET);
             while (getchar() != '\n'); // Clear input buffer
             continue;
         }
@@ -36,12 +40,12 @@ int main() {
                 userLogin();
                 break;
             case 3:
-                printf("Exiting the system. Saving data...\n");
+                printf("Exiting the system.\n");
                 saveToCSV();
                 printf("Goodbye!\n");
                 exit(0);
             default:
-                printf("Invalid choice, please try again.\n");
+                printf(RED"\nInvalid choice, please try again.\n"RESET);
         }
     }
 

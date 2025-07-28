@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <windows.h>
+#include <stdlib.h>
 #include "admin.h"
 #include "file.h"
 
@@ -9,6 +10,17 @@
 
 Book library[MAX_BOOKS];
 int bookCount = 0;
+
+
+void clearScreen() {
+#if defined(_WIN32) || defined(_WIN64)
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
+
 
 // Load book data from a CSV file
 void loadFromCSV() {
@@ -21,11 +33,11 @@ void loadFromCSV() {
     bookCount = 0;
     while (bookCount < MAX_BOOKS &&
            fscanf(fp, "%d,%99[^,],%99[^,],%d,%d\n",
-                  &library[bookCount].id,
-                  library[bookCount].title,
-                  library[bookCount].author,
-                  &library[bookCount].year,
-                  &library[bookCount].isAvailable) == 5) {
+                &library[bookCount].id,
+                library[bookCount].title,
+                library[bookCount].author,
+                &library[bookCount].year,
+                &library[bookCount].isAvailable) == 5) {
         bookCount++;
     }
 
@@ -56,5 +68,5 @@ void saveToCSV() {
     }
 
     fclose(fp);
-    printf("Library saved successfully to books.csv.\n");
+   // printf("Library saved successfully to books.csv.\n");
 }
