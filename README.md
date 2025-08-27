@@ -16,7 +16,10 @@ Admins have full control over the library and can perform:
 3. 📚 **View All Books**  
 4. 📕 **View Borrowed Books**  
 5. 🔢 **Count Total Books**  
-6. 🔍 **Search for Book**  
+6. 🔍 **Search for Books**  
+   - By **Title**  
+   - By **Author**  
+   - By **Publication Year**  
 7. 🔓 **Logout**
 
 ---
@@ -49,4 +52,5 @@ Users can interact with the library and perform:
 1. Navigate to the project folder:
    ```bash
    gcc main.c file.c admin.c user.c -o output/library.exe
+   ./output/library.exe
    cd LibrarySystem_C
