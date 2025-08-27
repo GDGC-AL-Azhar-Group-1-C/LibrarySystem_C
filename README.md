@@ -48,4 +48,5 @@ Users can interact with the library and perform:
 
 1. Navigate to the project folder:
    ```bash
+   gcc main.c file.c admin.c user.c -o output/library.exe
    cd LibrarySystem_C
