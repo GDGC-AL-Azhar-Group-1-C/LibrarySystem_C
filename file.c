@@ -11,7 +11,13 @@
 Book library[MAX_BOOKS];
 int bookCount = 0;
 
-
+void toLowerCase(char* str) {
+    for (int i = 0; str[i]; i++) {
+        if (str[i] >= 'A' && str[i] <= 'Z') {
+            str[i] = str[i] + 32;
+        }
+    }
+}
 void clearScreen() {
 #if defined(_WIN32) || defined(_WIN64)
     system("cls");

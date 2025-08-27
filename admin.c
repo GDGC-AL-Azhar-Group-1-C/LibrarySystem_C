@@ -166,10 +166,10 @@ void viewAllBooks() {
             library[i].isAvailable ? "Available" : "Borrowed");
     }
     printf("+------+------------------------+------------------------+------+------------+\n");
-    printf("/nDo you want keep viewing the books? (y/n): ");
+    printf("/nDo you want keep viewing the books? (Y): ");
     char c;
     scanf(" %c", &c);
-    if (c == 'n' || c == 'N') {
+    if (c == 'Y' || c == 'y') {
         Sleep(1000);
         clearScreen();
     } else {
@@ -198,10 +198,10 @@ void viewBorrowedBooks() {
         printf("| No borrowed books found.                                                  |\n");
     }
     printf("+------+---------------------------+------------------------+------+------------+\n");
-    printf("\nDo you want to keep viewing the borrowed books? (y/n): ");
+    printf("\nDo you want to keep viewing the borrowed books? (Y): ");
     char c; 
     scanf(" %c", &c);
-    if (c == 'n' || c == 'N') {
+    if (c == 'y' || c == 'Y') {
         Sleep(1000);
         clearScreen();
     } else {
@@ -219,35 +219,35 @@ void countBooks() {
 
 
 void adminMenu() {
-    char choice;
+    int choice;
     while (1) {
         displayAdminMenu();
-        if (scanf(" %c", &choice) != 1) {
+        if (scanf("%d", &choice) != 1) {
             while (getchar() != '\n');
             printf(RED"\nInvalid input. Please enter a number from 1 to 7.\n"RESET);
             continue;
         }
 
         switch (choice) {
-            case '1':
+            case 1:
                 addBook();
                 break;
-            case '2':
+            case 2:
                 removeBook();
                 break;
-            case '3':
+            case 3:
                 viewAllBooks();
                 break;
-            case '4':
+            case 4:
                 viewBorrowedBooks();
                 break;
-            case '5':
+            case 5:
                 countBooks();
                 break;
-            case '6':
+            case 6:
                 searchForBooks();
                 break;
-            case '7':
+            case 7:
                 printf(GREEN "Saving data...\n" RESET);
                 saveToCSV();
                 Sleep(1000);

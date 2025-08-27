@@ -10,14 +10,6 @@
 #define GREEN "\x1b[32m"
 #define RED "\x1b[31m"
 #define RESET "\x1b[0m"
- 
-void toLowerCase(char* str) {
-    for (int i = 0; str[i]; i++) {
-        if (str[i] >= 'A' && str[i] <= 'Z') {
-            str[i] = str[i] + 32;
-        }
-    }
-}
 
 void userLogin() {
     printf("\nWelcome to the User Login!\n");
@@ -60,7 +52,7 @@ void userLogin() {
 }
 
 void userMenu() {
-    char choice;
+    int choice;
     clearScreen();
     while (1) {
         displayUserMenu();
@@ -71,19 +63,19 @@ void userMenu() {
         }
 
         switch (choice) {
-            case '1':
+            case 1:
                 viewAvailableBooks();
                 break;
-            case '2':
+            case 2:
                 borrowBook();
                 break;
-            case '3':
+            case 3:
                 returnBook();
                 break;
-            case '4':
+            case 4:
                 searchForBooks();
                 break;
-            case '5':
+            case 5:
                 saveToCSV(); 
                 printf(GREEN "Saving data...\n" RESET);
                 Sleep(1000);
@@ -96,7 +88,7 @@ void userMenu() {
 }
 
 void searchForBooks(){
-    char choice;
+    int choice;
     clearScreen();
     if (bookCount == 0) {
         printf("No books in the system.\n");
@@ -112,12 +104,12 @@ void searchForBooks(){
     printf("4. Exit Search\n");
     printf("------------------------------\n");
     printf("Please select an option: ");
-    scanf(" %c", &choice);
+    scanf("%d", &choice);
     getchar(); // Clean up newline
 
     int found = 0;
 
-    if (choice == '1') {
+    if (choice == 1) {
         char tempSearch[MAX_STRING], tempBookTitle[MAX_STRING];
         printf("Enter book title: ");
         fgets(tempSearch, MAX_STRING, stdin);
@@ -141,7 +133,7 @@ void searchForBooks(){
             }
         }
 
-    } else if (choice == '2') {
+    } else if (choice == 2) {
         char tempSearch[MAX_STRING], tempBookAuthor[MAX_STRING];
         printf("Enter author name: ");
         fgets(tempSearch, MAX_STRING, stdin);
@@ -165,7 +157,7 @@ void searchForBooks(){
             }
         }
 
-    } else if (choice == '3') {
+    } else if (choice == 3) {
         int year;
         do {
             printf("Enter book publication year: ");
@@ -192,7 +184,7 @@ void searchForBooks(){
             }
         }
 
-    } else if (choice == '4') {
+    } else if (choice == 4) {
         return;
     } else {
         printf(RED"\nInvalid option.\n"RESET);
@@ -239,10 +231,10 @@ if (!found) {
         printf("| No available books found.                                                 |\n");
     }
     printf("+------+---------------------------+------------------------+------+------------+\n");
-    printf("\nDo you want to keep viewing the available books? (y/n): ");
+    printf("\nDo you want to keep viewing the available books? (Y): ");
     char c; 
     scanf(" %c", &c);
-    if (c == 'n' || c == 'N') {
+    if (c == 'y' || c == 'Y') {
         Sleep(1000);
         clearScreen();
     } else {

@@ -14,6 +14,7 @@ typedef struct {
 extern Book library[MAX_BOOKS];
 extern int bookCount;
 
+void toLowerCase(char* str);
 // clear terminal
 void clearScreen();
 
